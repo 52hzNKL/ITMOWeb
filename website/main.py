@@ -83,8 +83,7 @@ async def login_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
             content={"message": "Invalid username or password"}
         )
     user_data = {
-        "id": db_user.id,
-        "username": db_user.username
+        "id": db_user.id
     }
 
     access_token = create_access_token(user_data)

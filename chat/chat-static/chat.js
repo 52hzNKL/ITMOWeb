@@ -1,5 +1,11 @@
 let websocket = null; 
 
+function checktoken(){
+    if (!localStorage.getItem('access_token')){
+        alert("Вы не авторизовали это. Пожалуйста, вернитесь на страницу входа, чтобы продолжить");
+        window.location.href = `http://localhost:8080`;
+    }
+}
 
 function searchUser() {
     const searchValue = document.getElementById("user-search").value.trim();
@@ -21,13 +27,11 @@ function searchUser() {
     .then(guessData => {
         openChat(guessData);
     })
-    .catch(error => {
-        alert("Пользователь не существует или при поиске произошла ошибка.");
-    });
 }
 
 
 function openChat(guess) {
+    checktoken();
     const token = localStorage.getItem('access_token'); 
     const chatHistoryDiv = document.getElementById("chat-history");
     chatHistoryDiv.innerHTML = ""; 
@@ -56,9 +60,6 @@ function openChat(guess) {
 
         connectWebSocket(chat_id);
     })
-    .catch(error => {
-        alert("Не удалось получить историю сообщений, или произошла ошибка.");
-    });
 }
 
 
@@ -92,6 +93,7 @@ function connectWebSocket(chatId) {
 }
 
 function sendMessage() {
+    checktoken();
     const token = localStorage.getItem('access_token'); 
     const content = document.getElementById("message-input").value.trim();
     if (!websocket || websocket.readyState !== WebSocket.OPEN) {
@@ -119,6 +121,7 @@ function sendMessage() {
     })
 }
 function loadChatList() {
+    checktoken();
     const token = localStorage.getItem('access_token'); 
     fetch(`/chats/recent_messages?token=${token}`, { method: 'GET' })
     .then(response => {
@@ -155,7 +158,4 @@ function loadChatList() {
             chatListDiv.appendChild(chatItem);
         });
     })
-    .catch(error => {
-        alert("Не удалось загрузить список чатов, или произошла ошибка.");
-    });
 }

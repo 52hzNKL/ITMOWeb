@@ -28,12 +28,11 @@ def verify_access_token(token: str):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         user_id: str = payload.get("id")
-        username: str = payload.get("username")
 
-        if user_id is None or username is None:
+        if user_id is None:
             raise HTTPException(status_code=401, detail="Invalid token payload")
 
-        return {"id": user_id, "username": username}
+        return {"id": user_id}
     except PyJWTError:
         raise HTTPException(status_code=401, detail="Invalid token")
 
