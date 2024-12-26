@@ -11,7 +11,10 @@
 - git clone https://github.com/52hzNKL/ITMOWeb.git
 - cd Нгуен_Кхань_Ли_webdev_lab_1/ITMOWeb-main
 - docker-compose up --build  
-    
-3. Автор
+
+3. Проверка
+- http://localhost:8080
+  
+4. Автор
 - Нгуен Кхань Ли
 - Группа: N3347
