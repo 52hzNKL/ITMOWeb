@@ -9,7 +9,7 @@
 
 2. Запуск
 - git clone https://github.com/52hzNKL/ITMOWeb.git
-- cd Нгуен_Кхань_Ли_webdev_lab_1/ITMOWeb-main
+- cd ITMOWeb-main
 - docker-compose up --build  
 
 3. Проверка
