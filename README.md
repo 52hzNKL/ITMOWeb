@@ -5,14 +5,11 @@
 Чаты будут сохранены в интерфейсе чата.
 
 1. Системные требования
-- Python 3.19
 - Docker версии 27.2.0, сборка 3ab4256
-- PostgreSQL
-- Nginx
 
 2. Запуск
 - git clone https://github.com/52hzNKL/ITMOWeb.git
-- cd ITMOWeb-main/ITMOWeb-main
+- cd Нгуен_Кхань_Ли_webdev_lab_1/ITMOWeb-main
 - docker-compose up --build  
     
 3. Автор
